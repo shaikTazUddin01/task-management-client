@@ -1,11 +1,44 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth/useAuth';
+import { signOut } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
-    const navItem=<>
-    <li><NavLink to={'/'}>Home</NavLink></li>
-    <li><NavLink to={'/login'}>login</NavLink></li>
-    <li><NavLink to={'/signup'}>signUP</NavLink></li>
+    const { user,auth } = useAuth()
+
+    const handleLogOut=()=>{
+        signOut(auth)
+        .then((result) => {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "successfully you sign up",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }).catch((error) => {
+            const errorMessage = error.message;
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: errorMessage,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        
+    })
+    }
+    const navItem = <>
+        <li><NavLink to={'/'}>Home</NavLink></li>
+        {
+            user ?
+                <li onClick={handleLogOut}><Link>logout</Link></li>
+                :
+                <li><NavLink to={'/login'}>login</NavLink></li>
+
+        }
+        <li><NavLink to={'/signup'}>signup</NavLink></li>
     </>
     return (
         <div>
@@ -23,7 +56,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                       {navItem}
+                        {navItem}
                     </ul>
                 </div>
                 <div className="navbar-end">
