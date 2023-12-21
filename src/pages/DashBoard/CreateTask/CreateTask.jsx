@@ -1,16 +1,51 @@
+import axios from "axios";
+import useAxiosSecure from "../../../Hooks/axiosSecure/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const CreateTask = () => {
-
+    const axiosSecure = useAxiosSecure()
     const handleCreateTask = (e) => {
         e.preventDefault()
         const form = e.target
         const title = form.title.value;
-        const descriptions = form.descriptions.value;
+        const description = form.descriptions.value;
         const deadline = form.deadline.value;
         const priority = form.priority.value;
 
-        console.log(title,descriptions,deadline,priority);
+        const task = { title, description, deadline, priority,status:"pending"};
+        console.log(task)
+
+        axiosSecure.post('/createTask', task)
+            .then(res => {
+                if (res.data.insertedId) {
+                    form.reset()
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "successfully create a new task",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            }
+            )
+            .catch(err => {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "something is wrong please try again",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+
+
+
+
+
+
+
     }
 
     return (

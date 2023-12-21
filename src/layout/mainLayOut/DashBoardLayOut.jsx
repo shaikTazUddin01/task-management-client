@@ -3,7 +3,8 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const DashBoardLayOut = () => {
   const navitem = <>
-    <li><NavLink to={'/dashboard/createtask'}>Create todo</NavLink></li>
+    <li><NavLink to={'/dashboard/createtask'}>Create Task</NavLink></li>
+    <li><NavLink to={'/dashboard/alltask'}>All Task</NavLink></li>
   </>
   return (
 

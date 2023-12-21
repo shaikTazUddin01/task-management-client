@@ -7,6 +7,7 @@ import DashBoardLayOut from '../layout/mainLayOut/DashBoardLayOut';
 import PrivateRoute from './privateRoute';
 
 import CreateTask from '../pages/DashBoard/CreateTask/CreateTask';
+import ShowAllTask from '../pages/DashBoard/ShowAllTask/ShowAllTask';
 
 const Route = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const Route = createBrowserRouter([
       {
         path: 'createtask',
         element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
+      },
+      {
+        path:'alltask',
+        element:<PrivateRoute><ShowAllTask></ShowAllTask></PrivateRoute>
       }
     ]
 
