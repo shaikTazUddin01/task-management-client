@@ -79,13 +79,13 @@ const ShowAllTask = () => {
             <table className="table ">
                 {/* head */}
                 <thead>
-                    <tr>
-                        <th>#</th>
+                    <tr className='text-xl font bold'>
+                        <th>Id</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>deadline</th>
                         <th>Priority</th>
-                        <th>status</th>
+                        {/* <th>status</th> */}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -99,7 +99,7 @@ const ShowAllTask = () => {
                                 <td>{item?.description}</td>
                                 <td>{item?.deadline}</td>
                                 <td>{item?.priority}</td>
-                                <td>{item?.status}</td>
+                                {/* <td>{item?.status}</td> */}
                                 <td className='flex gap-3'>
                                     <Link to={`/dashboard/taskedit/${item?._id}`}>
                                     <button className='btn btn-success'>Edit</button>
