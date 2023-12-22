@@ -1,17 +1,18 @@
 import React from 'react';
-
+import bannerImg from '../../../assets/banner-img/b.jpg'
 const Banner = () => {
     return (
-        <div className="hero min-h-[40vh]" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+        <div className='flex flex-col-reverse md:flex-row justify-center items-center shadow-lg shadow-[#f39f60f4] px-5 min-h-[50vh]'>
+            <div className='w-full md:w-1/2  md:pl-5'>
+                <h1 className='text-3xl mt-10 md:text-4xl lg:text-6xl font-bold'>Task Management</h1>
+                <p className='mt-4'>
+                    Task management is essential for organizing work, setting priorities, and optimizing resources, fostering efficiency and goal achievement. It facilitates communication and collaboration, ensures accountability,</p>
                     <a href="/dashboard">
-                    <button className="btn btn-primary uppercase">Let's Explore</button>
+                    <button className='bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-700 mt-4 font-semibold mb-10'>Let’s Explore</button>
                     </a>
-                </div>
+            </div>
+            <div className=' md:w-1/2 mt-5'>
+                <img src={bannerImg} alt="" />
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ import CreateTask from '../pages/DashBoard/CreateTask/CreateTask';
 import ShowAllTask from '../pages/DashBoard/ShowAllTask/ShowAllTask';
 import MyTask from '../pages/DashBoard/MyTask/MyTask';
 import Dashboard from '../component/DashBoard/Dashboard';
+import EditTask from '../pages/DashBoard/ShowAllTask/EditTask';
 
 const Route = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const Route = createBrowserRouter([
       {
         path:'mytask',
         element:<PrivateRoute><MyTask></MyTask></PrivateRoute>
+      },
+      {
+        path:'taskedit/:id',
+        element:<PrivateRoute><EditTask></EditTask></PrivateRoute>
       }
     ]
 

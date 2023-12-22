@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     const auth = getAuth(app)
     // set current user
     const [user, setUser] = useState([])
+    const [loading,setloading]=useState(true)
     // create sign in auth
     const signIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
@@ -28,6 +29,7 @@ const googleSignIn=()=>{
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
             setUser(currentUser)
+            setloading(false)
         })
         return () => unSubscribe()
     }, [auth])
@@ -37,7 +39,8 @@ const googleSignIn=()=>{
         signup,
         signIn,
         user,
-        googleSignIn
+        googleSignIn,
+        loading
     }
     return <AuthContext.Provider value={authInFo}>
         {children}

@@ -65,8 +65,8 @@ const SignUP = () => {
             // style={{ backgroundImage: `url(${loginbg})` }}
             >
                 <div className="flex justify-center items-center min-h-[100vh] bg-[#00000062]">
-                    <div className="card flex-shrink-0 w-[90%] md:max-w-sm shadow-2xl bg-[#ffffff71] my-10">
-                        <h1 className='flex justify-center text-3xl lg:text-4xl font-bold py-5 bg-orange-500 rounded-t-2xl text-white'>Sign In</h1>
+                    <div className="card flex-shrink-0 w-[90%] md:max-w-lg shadow-2xl bg-[#ffffff71] my-10">
+                        <h1 className='flex justify-center text-3xl lg:text-4xl font-bold py-5 bg-orange-500 rounded-t-2xl text-white'>Sign Up</h1>
                         <form className="card-body" onSubmit={handleRegister}>
                             <div className="form-control">
                                 <label className="label">
@@ -93,7 +93,7 @@ const SignUP = () => {
                                 <input type="text" placeholder="photo Url" className="input input-bordered" name='photo' required />
                             </div>
                             <div className="form-control mt-6">
-                                <input type="submit" value="Sign In" className="hover:bg-orange-600 bg-orange-500 text-white text-[17px] py-2 rounded-lg" />
+                                <input type="submit" value="Sign Up" className="hover:bg-orange-600 bg-orange-500 text-white text-[17px] py-2 rounded-lg" />
                             </div>
                         </form>
                         <div className='flex justify-center items-center -mt-5'>

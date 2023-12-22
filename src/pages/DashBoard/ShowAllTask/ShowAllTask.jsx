@@ -3,6 +3,7 @@ import useAllTask from '../../../Hooks/allTask/useAllTask';
 import './shoalltask.css'
 import useAxiosSecure from '../../../Hooks/axiosSecure/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ShowAllTask = () => {
     const [data, isPending, refetch] = useAllTask()
@@ -37,7 +38,7 @@ const ShowAllTask = () => {
                                 icon: "success"
                             });
                         }
-                    }).catch(err=>{
+                    }).catch(err => {
                         Swal.fire({
                             // title: "",
                             text: "something is wrong please try again.",
@@ -100,7 +101,9 @@ const ShowAllTask = () => {
                                 <td>{item?.priority}</td>
                                 <td>{item?.status}</td>
                                 <td className='flex gap-3'>
+                                    <Link to={`/dashboard/taskedit/${item?._id}`}>
                                     <button className='btn btn-success'>Edit</button>
+                                    </Link>
                                     <button className='btn btn-error' onClick={() => handledelete(item?._id)}>Delete</button>
                                 </td>
                             </tr>

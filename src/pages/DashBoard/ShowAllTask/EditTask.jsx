@@ -1,14 +1,17 @@
-import axios from "axios";
-import useAxiosSecure from "../../../Hooks/axiosSecure/useAxiosSecure";
-import Swal from "sweetalert2";
-import useAuth from "../../../Hooks/useAuth/useAuth";
+import React from 'react';
+import useAxiosSecure from '../../../Hooks/axiosSecure/useAxiosSecure';
+import useAuth from '../../../Hooks/useAuth/useAuth';
+import Swal from 'sweetalert2';
+import { useParams } from 'react-router-dom';
 
-
-const CreateTask = () => {
+const EditTask = () => {
+const {id}=useParams()
+console.log(id)
     const{user}=useAuth()
     const email=user?.email
     const axiosSecure = useAxiosSecure()
-    const handleCreateTask = (e) => {
+
+    const handleEditTask = (e) => {
         e.preventDefault()
         const form = e.target
         const title = form.title.value;
@@ -17,17 +20,18 @@ const CreateTask = () => {
         const priority = form.priority.value;
 
 
-        const task = { title, description, deadline, priority,status:"pending",email};
+        const task = { title, description, deadline, priority,id};
         console.log(task)
 
-        axiosSecure.post('/createTask', task)
+        axiosSecure.put('/createTask', task)
             .then(res => {
+                console.log(res.data)
                 if (res.data.insertedId) {
                     form.reset()
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "successfully create a new task",
+                        title: "successfully Updated",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -58,8 +62,8 @@ const CreateTask = () => {
         >
             <div className="flex justify-center items-center min-h-[100vh] bg-[#00000062] z-0 pt-10">
                 <div className="card flex-shrink-0 w-[90%] md:max-w-lg shadow-2xl bg-[#ffffff71] my-10">
-                    <h1 className='flex justify-center text-3xl lg:text-4xl font-bold py-5 bg-orange-500 rounded-t-2xl text-white'>Create New Task</h1>
-                    <form className="card-body" onSubmit={handleCreateTask}>
+                    <h1 className='flex justify-center text-3xl lg:text-4xl font-bold py-5 bg-orange-500 rounded-t-2xl text-white'>Update Task</h1>
+                    <form className="card-body" onSubmit={handleEditTask}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-semibold text-lg">Title</span>
@@ -102,4 +106,4 @@ const CreateTask = () => {
     );
 };
 
-export default CreateTask;
+export default EditTask;
