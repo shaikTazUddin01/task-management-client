@@ -26,7 +26,7 @@ console.log(id)
         axiosSecure.put('/createTask', task)
             .then(res => {
                 console.log(res.data)
-                if (res.data.insertedId) {
+                if (res.data.modifiedCount) {
                     form.reset()
                     Swal.fire({
                         position: "center",
