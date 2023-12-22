@@ -13,12 +13,15 @@ const SignUP = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-        const password = form.password.value
+        const password = form.password.value;
+        const photo = form.photo.value;
+        console.log(photo)
         signup(email, password)
             .then((result) => {
                 if (result) {
                     updateProfile(auth.currentUser, {
                         displayName: name,
+                        photoURL:photo
                       }).then(() => {
                         Swal.fire({
                             position: "center",
@@ -83,6 +86,12 @@ const SignUP = () => {
                                 </label>
                                 <input type="password" placeholder="password" className="input input-bordered" name='password' required />
                             </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-semibold text-lg">Photo Url</span>
+                                </label>
+                                <input type="text" placeholder="photo Url" className="input input-bordered" name='photo' required />
+                            </div>
                             <div className="form-control mt-6">
                                 <input type="submit" value="Sign In" className="hover:bg-orange-600 bg-orange-500 text-white text-[17px] py-2 rounded-lg" />
                             </div>
@@ -97,7 +106,7 @@ const SignUP = () => {
                        
 
                         <div className='flex justify-center mb-5'>
-                            <p className='text-[18px] font-semibold'>Do't Have An Account <Link to={'/signup'} className='text-blue-700 font-bold'>Sign Up</Link></p>
+                            <p className='text-[18px] font-semibold'>Do't Have An Account <Link to={'/login'} className='text-blue-700 font-bold'>Sign in</Link></p>
                         </div>
                     </div>
                     {/* <ToastContainer></ToastContainer> */}

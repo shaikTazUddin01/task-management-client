@@ -8,6 +8,8 @@ import PrivateRoute from './privateRoute';
 
 import CreateTask from '../pages/DashBoard/CreateTask/CreateTask';
 import ShowAllTask from '../pages/DashBoard/ShowAllTask/ShowAllTask';
+import MyTask from '../pages/DashBoard/MyTask/MyTask';
+import Dashboard from '../component/DashBoard/Dashboard';
 
 const Route = createBrowserRouter([
   {
@@ -34,12 +36,21 @@ const Route = createBrowserRouter([
     element: <PrivateRoute><DashBoardLayOut></DashBoardLayOut></PrivateRoute>,
     children: [
       {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+      },
+      {
         path: 'createtask',
         element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
       },
       {
         path:'alltask',
         element:<PrivateRoute><ShowAllTask></ShowAllTask></PrivateRoute>
+      }
+      ,
+      {
+        path:'mytask',
+        element:<PrivateRoute><MyTask></MyTask></PrivateRoute>
       }
     ]
 
