@@ -46,7 +46,9 @@ const ShowAllTask = () => {
                         });
                     })
             }
-        });
+        }
+        
+        );
 
 
 
@@ -54,22 +56,6 @@ const ShowAllTask = () => {
 
 
 
-        axiosSecure.delete(`/createTask/${id}`)
-            .then(res => {
-                if (res.data.deletedCount) {
-                    refetch()
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "successfully delete a item",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
     }
     return (
         <div className="overflow-x-auto px-5 py-5">
